@@ -11,17 +11,19 @@ class App extends StatefulWidget {
 
 // the state of the stateful widget is the one that holds the data and the ui of the widget
 class _AppState extends State<App> {
+  List<int> numbers = [];
+
   int counter = 0;
 
   void onClickedPlus() {
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
     }); //setState function is a function that we use to notify our state class that the data has changed
   }
 
   void onClickedMinus() {
     setState(() {
-      counter = counter - 1;
+      numbers.remove(numbers.length);
     }); //setState function is a function that we use to notify our state class that the data has changed
   }
 
@@ -39,10 +41,7 @@ class _AppState extends State<App> {
                 'Click Count',
                 style: TextStyle(fontSize: 30),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(fontSize: 30),
-              ),
+              for (var n in numbers) Text('$n'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -57,7 +56,7 @@ class _AppState extends State<App> {
                     icon: const Icon(Icons.remove_circle_outline_rounded),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
